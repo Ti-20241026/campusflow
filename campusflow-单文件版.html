@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusFlow · 一站式校园生活服务 App｜项目网站（单文件版）</title>
+<meta name="description" content="CampusFlow 人机交互实验课小组项目 P3 项目网站：团队介绍 / 项目提案 / 数据收集计划 / 问卷题目。">
+<style>
+/* CampusFlow 项目网站 · 共用样式 */
+:root{
+  --ink:#12212e; --sub:#5c6b7a; --line:#e2e9ef; --bg:#f5f8fa; --card:#ffffff;
+  --brand:#0d6f8f; --brand2:#12a37a; --acc:#e8f4f2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink); line-height:1.8;
+  font-family:-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+a{color:var(--brand); text-decoration:none}
+a:hover{text-decoration:underline}
+header.hero{
+  background:linear-gradient(135deg,#0d6f8f 0%,#12a37a 100%);
+  color:#fff; padding:42px 22px 34px;
+}
+.wrap{max-width:1000px; margin:0 auto}
+.hero h1{margin:0 0 6px; font-size:30px; letter-spacing:.5px}
+.hero .en{font-family:Georgia,"Times New Roman",serif; font-size:13px; letter-spacing:2px; opacity:.85; text-transform:uppercase}
+.hero p.lead{margin:12px 0 0; font-size:15px; max-width:760px; opacity:.95}
+.hero .meta{margin-top:14px; font-size:12.5px; opacity:.9; font-family:Georgia,"Times New Roman",serif}
+nav.top{background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:9}
+nav.top .wrap{display:flex; align-items:center; gap:4px; padding:0 22px; height:52px; overflow-x:auto}
+nav.top a{padding:8px 13px; border-radius:8px; font-size:13.5px; color:#3b4b59; white-space:nowrap}
+nav.top a.on,nav.top a:hover{background:var(--acc); color:var(--brand); text-decoration:none; font-weight:600}
+main{padding:26px 22px 60px}
+section.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 18px}
+h2{font-size:19px; margin:0 0 4px; color:#0e3a4d}
+h2 .en{display:block; font-family:Georgia,"Times New Roman",serif; font-size:12px; letter-spacing:1.6px; color:var(--sub); font-weight:400; text-transform:uppercase; margin-top:3px}
+h3{font-size:15px; margin:20px 0 6px; color:#0d6f8f}
+p{margin:8px 0; font-size:14px}
+ul,ol{margin:8px 0 8px 20px; padding:0}
+li{font-size:14px; margin:5px 0}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:12px}
+.tile{background:#fbfdfe; border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.tile b{display:block; font-size:14px; color:#0e3a4d; margin-bottom:3px}
+.tile span{font-size:12.5px; color:var(--sub)}
+.member{display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px dashed var(--line)}
+.member:last-child{border-bottom:0}
+.avatar{width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#0d6f8f,#12a37a); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:17px; flex:0 0 52px; font-weight:700}
+.member .who{font-size:15px; font-weight:700}
+.member .sid{font-family:Georgia,"Times New Roman",serif; font-size:12px; color:var(--sub); margin-left:8px; font-weight:400}
+.member .role{margin-top:4px; font-size:13px; color:#3b4b59}
+table{width:100%; border-collapse:collapse; margin:12px 0; font-size:13px}
+th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+th{background:#f0f6f8; color:#0e3a4d; font-weight:600}
+td.c,th.c{text-align:center}
+.note{background:#f6fbf9; border-left:4px solid var(--brand2); border-radius:0 8px 8px 0; padding:11px 15px; margin:12px 0; font-size:13.5px; color:#2f4a44}
+.qbox{background:#fbfdfe; border:1px solid var(--line); border-left:3px solid var(--brand); border-radius:0 8px 8px 0; padding:11px 15px; margin:10px 0}
+.qbox .q{font-size:13.8px; font-weight:600; color:#0e3a4d}
+.qbox .f{font-size:13px; color:#4a5a68; margin-top:4px; padding-left:12px; border-left:2px solid #d8e3ea}
+.qbox .f b{color:#0d6f8f}
+footer{border-top:1px solid var(--line); background:#fff; padding:20px 22px 34px; font-size:12.5px; color:var(--sub)}
+footer .wrap p{margin:4px 0}
+.pill{display:inline-block; background:var(--acc); color:var(--brand); border-radius:20px; padding:2px 11px; font-size:12px; margin:0 6px 6px 0}
+
+
+.page{margin-bottom:34px; padding-top:8px; border-top:1px solid var(--line)}
+.page .pagetitle{font-size:17px; color:#0d6f8f; margin:14px 0 6px; padding-left:10px; border-left:4px solid var(--brand2)}
+.page .pagetitle .en{display:none}
+nav.top a{scroll-margin-top:70px}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="en">Team CampusFlow &middot; HCI Course Project</div>
+    <h1>CampusFlow</h1>
+    <p class="lead"><b>面向在校大学生的一站式校园生活服务 App。</b>
+      它把食堂排队与菜单、图书馆座位与自习室、打印店排队、快递代取、校园活动与讲座报名、
+      校园卡与费用查询等分散在多个 App、公众号与群聊里的信息，汇总到一个界面中，
+      并提供「同校同学互助代办（跑腿）」与「课表／空闲时间联动提醒」。</p>
+    <div class="meta">Course: 人机交互（Human-Computer Interaction）实验课 · Assignment P3: Collecting Data (Slide 8, 85-87) · 2026</div>
+  </div>
+</header>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="#overview">首页 Overview</a>
+    <a href="#team">团队介绍 Team</a>
+    <a href="#proposal">项目提案 Proposal</a>
+    <a href="#data">数据收集计划 Data Collection</a>
+    <a href="#survey">问卷题目 Survey</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div id="overview" class="page">
+    <h2 class="pagetitle">首页 Overview</h2>
+<section class="card">
+    <h2>项目简介<span class="en">Project Overview</span></h2>
+    <p>CampusFlow 的目标用户是<b>每天在校园内完成多件碎片化事务的本科生与研究生</b>。
+       目前这些事务的信息来源高度分散：食堂菜单在公众号、图书馆座位在小程序、打印店排队要打电话、
+       快递代取靠群聊、讲座报名在学校官网——用户为了办成一件事，往往要打开三四个入口。</p>
+    <p>我们希望通过本阶段的访谈与问卷，弄清用户在校园事务上的<b>真实流程、信息获取渠道、痛点与替代方案</b>，
+       以及他们对「整合式校园服务 App」的<b>接受度与功能优先级</b>。</p>
+    <div class="grid">
+      <div class="tile"><b>目标用户</b><span>本校在读本科生与研究生；每周在校园内完成 3 件以上生活事务</span></div>
+      <div class="tile"><b>核心问题</b><span>信息分散、实时性差、排队时间不可预期、代办缺乏可信机制</span></div>
+      <div class="tile"><b>本阶段任务</b><span>P3：访谈 4 位潜在用户 + 问卷回收 10 份以上，并公开本网站</span></div>
+      <div class="tile"><b>研究方法</b><span>半结构化访谈（探索）＋ 结构化问卷（验证与量化）</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>网站导航<span class="en">What's on this site</span></h2>
+    <p>按作业要求，本站包含以下内容（均直接呈现在页面上，不依赖外部 PDF 文件）：</p>
+    <ul>
+      <li><a href="#team"><b>团队介绍 Team intro</b></a> —— 四位成员、分工与各自负责的模块</li>
+      <li><a href="#proposal"><b>项目提案 Project Proposal</b></a> —— 背景问题、目标用户、功能设想与设计理由</li>
+      <li><a href="#data"><b>数据收集计划 Data collection plan</b></a> —— 访谈与问卷的对象、方法、样本量与流程</li>
+      <li><a href="#survey"><b>问卷题目 Survey instrument</b></a> —— 正在投放的完整问卷（20 题）</li>
+    </ul>
+    <div class="note"><b>阶段说明：</b>本网站对应人机交互实验课作业 4（P3: Collecting Data）。
+      本阶段之前已完成 P2「Planning Data Collection」（访谈脚本与问卷设计），
+      本阶段的工作是<b>把脚本投入真实使用</b>并回收数据。</div>
+  </section>
+
+  <section class="card">
+    <h2>本阶段交付<span class="en">Deliverables of P3</span></h2>
+    <table>
+      <tr><th style="width:32%">交付物</th><th>说明</th></tr>
+      <tr><td>访谈逐字稿</td><td>4 位潜在用户的半结构化访谈记录（含即兴追问）</td></tr>
+      <tr><td>问卷原始数据</td><td>10 份以上有效问卷的逐题原始数据表</td></tr>
+      <tr><td>项目网站</td><td>即本站，公开可访问</td></tr>
+    </table>
+    <p><span class="pill">4 位受访者</span><span class="pill">10+ 份问卷</span><span class="pill">含追问记录</span><span class="pill">原始数据可追溯</span></p>
+  </section>
+  </div>
+  <div id="team" class="page">
+    <h2 class="pagetitle">团队介绍 Team</h2>
+<section class="card">
+    <h2>成员<span class="en">Members</span></h2>
+
+    <div class="member">
+      <div class="avatar">王</div>
+      <div>
+        <div class="who">王正阳<span class="sid">202310130296</span></div>
+        <div class="role">负责模块：团队名与项目描述（原创撰写）· 访谈脚本 Topic 3「解决方案与期待」（原创撰写）
+          · 问卷 Section C「功能价值与使用意愿」（原创撰写）· 访谈 Topic 1 的评审与改进。</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar">刘</div>
+      <div>
+        <div class="who">刘明洋<span class="sid">202300130078</span></div>
+        <div class="role">负责模块：访谈脚本 Intro 与 Warm-up（原创撰写）· 访谈 Closing 与主持人备忘（原创撰写）
+          · 问卷开放题与结束语（原创撰写）· 访谈 Topic 2 的评审与改进。</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar">郑</div>
+      <div>
+        <div class="who">郑立昌<span class="sid">202300130116</span></div>
+        <div class="role">负责模块：访谈脚本 Topic 1「用户与情境」（原创撰写）· 问卷 Section A「人口统计信息」（原创撰写）
+          · 团队名与项目描述的评审与改进 · 全文格式检查与交叉校对。</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="avatar">杨</div>
+      <div>
+        <div class="who">杨梓祺<span class="sid">202300130265</span></div>
+        <div class="role">负责模块：访谈脚本 Topic 2「痛点与现有替代方案」（原创撰写）· 问卷 Section B「现有工具与行为」（原创撰写）
+          · 访谈 Intro 与 Warm-up 的评审与改进 · 全文格式检查与交叉校对。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>分工表<span class="en">Contributors</span></h2>
+    <p>下表为各章节的<b>原始撰写人</b>与<b>最终改进／审阅人</b>。每一节均由非撰稿成员复查后定稿。</p>
+    <table>
+      <tr><th style="width:44%">章节</th><th style="width:28%">原始撰写</th><th style="width:28%">改进／审阅</th></tr>
+      <tr><td>团队名与项目描述</td><td>王正阳</td><td>郑立昌</td></tr>
+      <tr><td>访谈脚本 —— Intro 与 Warm-up</td><td>刘明洋</td><td>杨梓祺</td></tr>
+      <tr><td>访谈脚本 —— Topic 1（用户与情境）</td><td>郑立昌</td><td>王正阳</td></tr>
+      <tr><td>访谈脚本 —— Topic 2（痛点与替代方案）</td><td>杨梓祺</td><td>刘明洋</td></tr>
+      <tr><td>访谈脚本 —— Topic 3（解决方案与期待）</td><td>王正阳</td><td>郑立昌</td></tr>
+      <tr><td>访谈脚本 —— Closing 与主持人备忘</td><td>刘明洋</td><td>杨梓祺</td></tr>
+      <tr><td>问卷 Section A 人口统计信息</td><td>郑立昌</td><td>王正阳</td></tr>
+      <tr><td>问卷 Section B 现有工具与行为</td><td>杨梓祺</td><td>刘明洋</td></tr>
+      <tr><td>问卷 Section C 功能价值与使用意愿</td><td>王正阳</td><td>郑立昌</td></tr>
+      <tr><td>问卷开放题与结束语</td><td>刘明洋</td><td>杨梓祺</td></tr>
+      <tr><td>全文格式检查与交叉校对</td><td>郑立昌</td><td>杨梓祺</td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>协作方式<span class="en">How we work</span></h2>
+    <ul>
+      <li><b>分工原则</b>：每一模块都由一名成员原创撰写，再由另一名非撰稿成员评审，避免自我校对。</li>
+      <li><b>评审要点</b>：问题是否诱导、是否重复、是否落在「访谈探索 / 问卷验证」的正确分工上。</li>
+      <li><b>数据阶段分工</b>：四人各自完成 1 场访谈并负责转录；问卷由四人分别在各自的同学与课题组渠道投放。</li>
+      <li><b>伦理</b>：访谈前取得口头知情同意，可随时终止；问卷匿名，不收集可识别个人身份的信息。</li>
+    </ul>
+  </section>
+  </div>
+  <div id="proposal" class="page">
+    <h2 class="pagetitle">项目提案 Proposal</h2>
+<section class="card">
+    <h2>要解决的问题<span class="en">Problem</span></h2>
+    <p>大学校园里的生活事务本身并不复杂，复杂的是<b>获取信息的路径</b>。同一件小事，今天可能要在三个入口之间来回切换：</p>
+    <ul>
+      <li>食堂今天有什么菜、哪个窗口人少 —— 往往只能走到现场才知道；</li>
+      <li>图书馆还有没有座位、自习室是否开放 —— 信息散落在不同小程序里，更新不及时；</li>
+      <li>打印店在不在、要不要排队 —— 多数时候靠打电话或直接跑一趟；</li>
+      <li>快递到了但人不在、想让同学顺路代取 —— 靠群聊喊话，缺少可信与结算机制；</li>
+      <li>讲座与活动的报名入口 —— 分散在各院系通知与官网，容易错过。</li>
+    </ul>
+    <p>结果是两类反复出现的浪费：<b>白跑一趟</b>（到了现场才发现办不了），以及<b>把碎片时间耗在排队与等待上</b>。
+      这两件事都不属于用户自己的过错，而是信息供给方式造成的。</p>
+  </section>
+
+  <section class="card">
+    <h2>目标用户<span class="en">Target users</span></h2>
+    <ul>
+      <li><b>主要用户</b>：本校在读本科生与研究生，每周在校园内完成 3 件以上生活事务（用餐、借还书、打印、取快递、参加活动等）。</li>
+      <li><b>典型情境</b>：课间二十分钟要同时解决「吃饭 + 取快递」；晚上回到宿舍才发现打印店已关门；周末想把几天的事务一次办完。</li>
+      <li><b>次要用户</b>：愿意用零散时间接单、帮同学代办事务的在校学生（互助跑腿的供给端）。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>功能设想<span class="en">Proposed features</span></h2>
+    <table>
+      <tr><th style="width:30%">功能模块</th><th>设想内容</th></tr>
+      <tr><td>食堂实时排队与菜单</td><td>各窗口当前拥挤程度、当日菜单与价格，支持按「最快能吃上」排序</td></tr>
+      <tr><td>图书馆座位与自习室</td><td>各馆区可用座位数与开放时间，可查看某馆区的历史空闲规律</td></tr>
+      <tr><td>打印店排队与在线下单</td><td>排队时长预估、文件上传与到店取件，减少现场等待</td></tr>
+      <tr><td>快递代取与互助跑腿</td><td>发布代办任务（取件、带饭、占座），由同校同学接单，带评价与结算记录</td></tr>
+      <tr><td>活动与讲座一键报名</td><td>汇总各院系活动，按时间与兴趣筛选，一键报名并加入提醒</td></tr>
+      <tr><td>校园卡余额与消费记录</td><td>余额与近期消费汇总，防止在食堂窗口前才发现余额不足</td></tr>
+      <tr><td>课表与空闲时间提醒</td><td>结合课表推送「现在适合去办哪件事」——把事务安排进已有空档</td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>设计理由<span class="en">Design rationale</span></h2>
+    <ul>
+      <li><b>以任务而非功能组织界面</b>：用户脑子里想的是「我现在能不能吃上饭」，而不是「进入食堂模块」。
+        因此首屏按<b>情境</b>（我现在在哪、还有多少时间）组织，而不是按功能清单排列入口。—— 这是本阶段访谈要重点验证的假设。</li>
+      <li><b>实时性优先于信息量</b>：校园信息的价值高度依赖新鲜度，一个过期的时间比没有更糟（用户会白跑一趟）。
+        因此每个模块都要显示「数据更新于几分钟前」。</li>
+      <li><b>互助需要可信机制</b>：跑腿功能的成败不取决于任务发布，而取决于结算与评价是否让人放心，
+        这是本阶段访谈中「最不放心或最麻烦的环节」一题的关注点。</li>
+      <li><b>隐私是前提条件</b>：位置、课表、消费记录都属于敏感信息，问卷中专门设置了对各类信息的提供意愿与信任条件题目。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>范围与不做什么<span class="en">Scope</span></h2>
+    <ul>
+      <li>本项目聚焦<b>校园内的生活事务</b>，不做社交、不做课程学习平台、不做二手交易。</li>
+      <li>本期（P3）<b>只收集数据、不设计界面</b>；界面方案将在后续阶段依据本阶段的数据决定。</li>
+      <li>数据收集阶段不预先宣称功能的价值排序——排序结果由问卷与访谈决定。</li>
+    </ul>
+    <div class="note">本提案是 P2 阶段定稿的内容；P3 阶段的任务是用访谈与问卷检验它，而不是替它辩护。</div>
+  </section>
+  </div>
+  <div id="data" class="page">
+    <h2 class="pagetitle">数据收集计划 Data Collection</h2>
+<section class="card">
+    <h2>研究问题<span class="en">Research questions</span></h2>
+    <ol>
+      <li>大学生在校园事务上的<b>真实流程</b>是什么？信息通常从哪里来，中间有哪些环节？</li>
+      <li>流程中的<b>痛点与替代方案</b>是什么？哪些做法是用户为了绕开现有工具的缺陷而自发发明的？</li>
+      <li>用户对<b>整合式校园服务 App</b> 的接受度如何？哪些功能最有价值，哪些属于「有也行、没有也行」？</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>方法一：半结构化访谈<span class="en">Method 1 — Semi-structured interviews</span></h2>
+    <table>
+      <tr><th style="width:26%">要素</th><th>安排</th></tr>
+      <tr><td>访谈对象</td><td>本校在读本科生／研究生，每周在校园内完成 3 件以上生活事务（用餐、借还书、打印、取快递、参加活动等）</td></tr>
+      <tr><td>样本量</td><td><b>4 位</b>潜在用户（每位成员各完成 1 场）</td></tr>
+      <tr><td>抽样方式</td><td>便利抽样 + 异质化考虑：覆盖不同年级、不同住宿方式（校内宿舍／校外通勤），避免全部来自同一宿舍或同一课题组</td></tr>
+      <tr><td>时长</td><td>25–35 分钟／场，线下面对面或线上视频</td></tr>
+      <tr><td>记录方式</td><td>征得同意后录音；同时记录主持人的现场笔记（语气、犹豫、动作演示）。录音转写为逐字稿</td></tr>
+    </table>
+
+    <h3>脚本结构</h3>
+    <ul>
+      <li><b>Intro</b>：逐字念开场白，说明目的、时长、匿名与可随时终止，确认是否可录音。</li>
+      <li><b>Warm-up（3 题）</b>：自我介绍；带我走一遍你最近一个普通的工作日；你平时和同学最常聊什么生活话题。</li>
+      <li><b>Topic 1 用户与情境</b>：最近一周办过哪些生活类事务、用什么渠道找信息、手机上现有哪些校园相关 App／小程序、哪些必须到场、课表如何与事务协调。</li>
+      <li><b>Topic 2 痛点与替代方案</b>：最近一次办事让你恼火的情形、信息不准确或过期、排队与「非常规」应对、事情办不成时的备选、请同学代办的沟通与结算。</li>
+      <li><b>Topic 3 解决方案与期待</b>：对整合式 App 的第一反应；最有价值与可有可无的功能及排序依据；
+        愿意提供的个人信息（课表／位置／校园卡余额／手机号）与绝对不愿给的；对「同学互助代办」功能的态度与担心；
+        以及"做到什么程度才会真的装到手机上并留下来"。</li>
+      <li><b>Closing</b>：还有什么想补充的；是否愿意参与后续原型试用；致谢。</li>
+    </ul>
+
+    <h3>追问策略（本阶段的质量关键）</h3>
+    <div class="note">评分明确要求：访谈中必须有<b>足量的即兴追问</b>，否则大幅扣分。因此每场访谈承诺做到：</div>
+    <ul>
+      <li>每个核心问题后至少一次追问，优先使用 <b>what / why / how</b> 三类句式：「具体发生了什么？」「为什么当时这么选？」「你是怎么操作的？」</li>
+      <li>使用受访者的原词回问，不替他归纳；不把问题改成选项。</li>
+      <li>回答后先停顿 3 秒，给对方补充的空间；沉默不等于结束。</li>
+      <li><b>不在访谈中介绍或推销我们的功能设想</b>，避免引导性提问；Topic 3 才出现方案性问题。</li>
+      <li>追问与未预料到的回答逐条记入逐字稿，并在数据表中标记，作为后续设计依据。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>方法二：问卷<span class="en">Method 2 — Survey</span></h2>
+    <table>
+      <tr><th style="width:26%">要素</th><th>安排</th></tr>
+      <tr><td>投放对象</td><td>本校在读本科生与研究生，线上发放</td></tr>
+      <tr><td>样本量</td><td>目标回收 <b>10 份以上有效问卷</b>（计划投放范围更大，以覆盖不同年级与住宿方式）</td></tr>
+      <tr><td>填答时长</td><td>5–7 分钟，共 20 题</td></tr>
+      <tr><td>题目结构</td><td>A 人口统计信息（5 题）· B 现有工具与行为（5 题）· C 功能价值与使用意愿（10 题，含 3 题开放题）</td></tr>
+      <tr><td>题型分布</td><td>单选题、多选题、李克特 5 级量表、矩阵量表、排序题、开放式问答题</td></tr>
+      <tr><td>投放渠道</td><td>班级与课题组群、宿舍楼栋群、社团群；由四位成员分别在自己的社交渠道发出，避免样本集中在单一群体</td></tr>
+    </table>
+
+    <h3>为什么这些内容放在问卷而不是访谈</h3>
+    <p>问卷用于<b>验证与量化</b>：适合让很多人快速选择、打分量表、排出优先级，从而得到可统计的分布。
+      因此以结构化题型为主，只在需要收集原话与补充说明的地方使用开放题。</p>
+
+    <h3>分析计划</h3>
+    <ul>
+      <li>单选题与量表题：统计各选项频次与百分比，计算矩阵量表各事务「麻烦程度」的均值并排序。</li>
+      <li>排序题：计算各功能的平均名次（Borda 式计分），得到功能优先级。</li>
+      <li>多选题：统计各选项被选比例，并对「卸载原因」「信任条件」做频次排序。</li>
+      <li>开放题：按主题归类（信息不准、排队、隐私、功能取舍），与访谈结论交叉印证。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>数据管理与伦理<span class="en">Data management &amp; ethics</span></h2>
+    <ul>
+      <li><b>匿名化</b>：访谈逐字稿以「受访者 A/B/C/D」编号，删除姓名、专业、宿舍等可识别信息；问卷全程匿名。</li>
+      <li><b>知情同意</b>：访谈前口头说明研究目的与用途，告知可随时终止、可拒绝录音；不录音时仅做笔记。</li>
+      <li><b>存储</b>：原始录音与逐字稿仅保存在团队成员设备中，用于课程作业，不对外公开、不做二次使用。</li>
+      <li><b>可追溯</b>：问卷原始数据以表格形式保留逐题作答，不做清洗前的覆盖，便于核对。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>本阶段进度<span class="en">Schedule</span></h2>
+    <table>
+      <tr><th style="width:22%">步骤</th><th style="width:30%">产出</th><th>负责人</th></tr>
+      <tr><td>1. 访谈执行</td><td>4 场访谈录音与现场笔记</td><td>四位成员各 1 场</td></tr>
+      <tr><td>2. 逐字稿整理</td><td>4 份带追问标记的访谈逐字稿</td><td>各自整理 + 交叉复核</td></tr>
+      <tr><td>3. 问卷投放</td><td>问卷链接与回收数据</td><td>四位成员分渠道投放</td></tr>
+      <tr><td>4. 原始数据整理</td><td>逐题原始数据表（10 份以上）</td><td>郑立昌、杨梓祺</td></tr>
+      <tr><td>5. 汇总提交</td><td>PDF 报告 + 本网站链接</td><td>王正阳、刘明洋</td></tr>
+    </table>
+  </section>
+  </div>
+  <div id="survey" class="page">
+    <h2 class="pagetitle">问卷题目 Survey</h2>
+<section class="card">
+    <h2>A. 人口统计信息<span class="en">Demographics</span></h2>
+    <div class="qbox"><div class="q">Q1. 你目前的身份是？（单选）</div>
+      <div class="f">○ 本科生（大一／大二）　○ 本科生（大三／大四）　○ 硕士研究生　○ 博士研究生　○ 其他：______</div></div>
+    <div class="qbox"><div class="q">Q2. 你目前住在哪里？（单选）</div>
+      <div class="f">○ 校内宿舍　○ 校外租房（步行／骑行 15 分钟内）　○ 校外（通勤 15 分钟以上）　○ 其他：______</div></div>
+    <div class="qbox"><div class="q">Q3. 你平均每周有几天需要在校园内完成生活类事务（用餐、打印、取快递、借还书、参加活动等）？（单选）</div>
+      <div class="f">○ 1 天及以下　○ 2–3 天　○ 4–5 天　○ 6–7 天</div></div>
+    <div class="qbox"><div class="q">Q4. 你平均每天在校园内用于「排队等待」的时间大约是？（单选）</div>
+      <div class="f">○ 10 分钟以内　○ 10–30 分钟　○ 30–60 分钟　○ 1 小时以上</div></div>
+    <div class="qbox"><div class="q">Q5. 你目前使用的手机系统是？（单选）</div>
+      <div class="f">○ iOS　○ Android　○ 其他／不确定</div></div>
+  </section>
+
+  <section class="card">
+    <h2>B. 现有工具与行为<span class="en">Current tool usage &amp; behavior</span></h2>
+    <div class="qbox"><div class="q">Q6. 你目前使用过以下哪些校园信息渠道？（可多选）</div>
+      <div class="f">☐ 学校官方 App　☐ 微信公众号／服务号　☐ 微信／QQ 群聊　☐ 校园小程序（食堂、图书馆、打印）　☐ 学校官网　☐ 同学之间口头或私聊询问　☐ 校园公告栏／海报　☐ 其他：______</div></div>
+    <div class="qbox"><div class="q">Q7. 关于校园生活信息，你在多大程度上同意下面这句话：「我需要打开好几个不同的 App 或群，才能把一件事的信息凑齐。」（李克特量表）</div>
+      <div class="f">1 完全不同意　2 不同意　3 一般　4 同意　5 完全同意</div></div>
+    <div class="qbox"><div class="q">Q8. 你最近一个月，因为「信息不准确或已过期」而白跑一趟（到了现场才发现办不了）的次数是？（单选）</div>
+      <div class="f">○ 0 次　○ 1–2 次　○ 3–5 次　○ 6 次以上</div></div>
+    <div class="qbox"><div class="q">Q9. 请评价以下校园事务对你的「麻烦程度」。（矩阵量表：1 = 完全不麻烦，5 = 非常麻烦）</div>
+      <div class="f">食堂排队与菜单查询　1 / 2 / 3 / 4 / 5<br>
+        图书馆／自习室座位　1 / 2 / 3 / 4 / 5<br>
+        打印、复印与装订　1 / 2 / 3 / 4 / 5<br>
+        快递取件与代取　1 / 2 / 3 / 4 / 5<br>
+        校园活动与讲座报名　1 / 2 / 3 / 4 / 5<br>
+        校园卡充值与费用查询　1 / 2 / 3 / 4 / 5</div></div>
+    <div class="qbox"><div class="q">Q10. 如果有一个整合式校园生活 App，请把下列功能按「你最希望它先做好」的顺序排序（1 = 最优先）。（排序题）</div>
+      <div class="f">____ 食堂实时排队与菜单　____ 图书馆座位与自习室查询　____ 打印店排队与在线下单<br>
+        ____ 快递代取与互助跑腿　____ 校园活动与讲座一键报名　____ 校园卡余额与消费记录　____ 课表与空闲时间提醒</div></div>
+  </section>
+
+  <section class="card">
+    <h2>C. 功能价值与使用意愿<span class="en">Feature value &amp; usage intention</span></h2>
+    <div class="qbox"><div class="q">Q11. 对于「看到食堂／打印店的实时排队情况」这个功能，你觉得它的价值是？（单选）</div>
+      <div class="f">○ 非常需要，会显著改变我的安排　○ 比较需要，偶尔会用　○ 一般，用不用都行　○ 不太需要　○ 完全不需要</div></div>
+    <div class="qbox"><div class="q">Q12. 对于「发布跑腿任务，由同校同学接单代办」这个功能，你目前的态度是？（单选）</div>
+      <div class="f">○ 愿意发布任务　○ 愿意接单帮别人　○ 两者都愿意　○ 都不愿意　○ 不确定，需要先看看别人怎么用</div></div>
+    <div class="qbox"><div class="q">Q13. 在使用这类整合 App 时，请说明你对以下信息的提供意愿。（矩阵单选：愿意提供／视情况而定／不愿意提供）</div>
+      <div class="f">课表与上课地点　·　当前实时位置　·　校园卡余额与消费记录　·　手机号（用于任务通知）　·　姓名与学号（用于身份认证）</div></div>
+    <div class="qbox"><div class="q">Q14. 什么样的做法最能让你放心地把上面的信息交给这个 App？（可多选，最多选 3 项）</div>
+      <div class="f">☐ 明确说明数据用途，且可随时撤回授权　☐ 只在本校内使用，不对第三方共享　☐ 学校官方认证或背书　☐ 可以匿名使用核心功能　☐ 有其他同学已经在用，口碑可信　☐ 其他：______</div></div>
+    <div class="qbox"><div class="q">Q15. 如果这个 App 做得很好，你预计自己每周会使用它几次？（单选）</div>
+      <div class="f">○ 几乎不用　○ 1–2 次　○ 3–5 次　○ 6–10 次　○ 10 次以上</div></div>
+    <div class="qbox"><div class="q">Q16. 下面这些情况，哪些会直接导致你卸载这个 App？（可多选）</div>
+      <div class="f">☐ 信息更新不及时，看到的内容和现场不一致　☐ 广告或推送太多　☐ 打开速度慢、经常卡顿　☐ 强制要求过多个人信息　☐ 同校同学使用的人太少，互助功能没人响应　☐ 功能太多、找不到我需要的入口　☐ 其他：______</div></div>
+    <div class="qbox"><div class="q">Q17. 整体来说，你对「一个 App 解决校园生活大部分事务」这件事的信心有多高？（李克特 5 级）</div>
+      <div class="f">1 完全没有信心　2 信心较低　3 一般　4 比较有信心　5 非常有信心</div></div>
+    <div class="qbox"><div class="q">Q18. 关于校园生活服务，最让你头疼的一件事是什么？请具体描述一次你的经历。（开放题，2–3 句）</div>
+      <div class="f">____________________________________________</div></div>
+    <div class="qbox"><div class="q">Q19. 如果这个 App 只能有一个功能，你希望是哪一个？为什么？（开放题）</div>
+      <div class="f">____________________________________________</div></div>
+    <div class="qbox"><div class="q">Q20. 关于这个校园生活 App，你还有什么想法、担心或建议想告诉我们？（开放题）</div>
+      <div class="f">____________________________________________</div></div>
+    <div class="note"><b>结束语：</b>感谢你的填写！如果你愿意参与后续的原型试用访谈，请留下联系方式（选填）：______</div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Team CampusFlow</b> · 王正阳（202310130296）· 刘明洋（202300130078）· 郑立昌（202300130116）· 杨梓祺（202300130265）</p>
+    <p>人机交互（HCI）实验课小组项目 · P3: Collecting Data · 2026</p>
+    <p>本页为单文件版本：不依赖任何外部文件，可直接双击打开或整体上传。</p>
+  </div>
+</footer>
+
+</body>
+</html>

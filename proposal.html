@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目提案 Project Proposal · CampusFlow 项目网站</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="en">Project proposal</div>
+    <h1>项目提案：CampusFlow</h1>
+    <p class="lead">面向在校大学生的一站式校园生活服务 App —— 把分散在多处的校园事务信息收进一个界面，
+      并让「同学之间互相代办」变成一件可信、可结算的事。</p>
+  </div>
+</header>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="index.html">首页 Overview</a>
+    <a href="team.html">团队介绍 Team</a>
+    <a class="on" href="proposal.html">项目提案 Proposal</a>
+    <a href="data-collection.html">数据收集计划 Data Collection</a>
+    <a href="survey.html">问卷题目 Survey</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>要解决的问题<span class="en">Problem</span></h2>
+    <p>大学校园里的生活事务本身并不复杂，复杂的是<b>获取信息的路径</b>。同一件小事，今天可能要在三个入口之间来回切换：</p>
+    <ul>
+      <li>食堂今天有什么菜、哪个窗口人少 —— 往往只能走到现场才知道；</li>
+      <li>图书馆还有没有座位、自习室是否开放 —— 信息散落在不同小程序里，更新不及时；</li>
+      <li>打印店在不在、要不要排队 —— 多数时候靠打电话或直接跑一趟；</li>
+      <li>快递到了但人不在、想让同学顺路代取 —— 靠群聊喊话，缺少可信与结算机制；</li>
+      <li>讲座与活动的报名入口 —— 分散在各院系通知与官网，容易错过。</li>
+    </ul>
+    <p>结果是两类反复出现的浪费：<b>白跑一趟</b>（到了现场才发现办不了），以及<b>把碎片时间耗在排队与等待上</b>。
+      这两件事都不属于用户自己的过错，而是信息供给方式造成的。</p>
+  </section>
+
+  <section class="card">
+    <h2>目标用户<span class="en">Target users</span></h2>
+    <ul>
+      <li><b>主要用户</b>：本校在读本科生与研究生，每周在校园内完成 3 件以上生活事务（用餐、借还书、打印、取快递、参加活动等）。</li>
+      <li><b>典型情境</b>：课间二十分钟要同时解决「吃饭 + 取快递」；晚上回到宿舍才发现打印店已关门；周末想把几天的事务一次办完。</li>
+      <li><b>次要用户</b>：愿意用零散时间接单、帮同学代办事务的在校学生（互助跑腿的供给端）。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>功能设想<span class="en">Proposed features</span></h2>
+    <table>
+      <tr><th style="width:30%">功能模块</th><th>设想内容</th></tr>
+      <tr><td>食堂实时排队与菜单</td><td>各窗口当前拥挤程度、当日菜单与价格，支持按「最快能吃上」排序</td></tr>
+      <tr><td>图书馆座位与自习室</td><td>各馆区可用座位数与开放时间，可查看某馆区的历史空闲规律</td></tr>
+      <tr><td>打印店排队与在线下单</td><td>排队时长预估、文件上传与到店取件，减少现场等待</td></tr>
+      <tr><td>快递代取与互助跑腿</td><td>发布代办任务（取件、带饭、占座），由同校同学接单，带评价与结算记录</td></tr>
+      <tr><td>活动与讲座一键报名</td><td>汇总各院系活动，按时间与兴趣筛选，一键报名并加入提醒</td></tr>
+      <tr><td>校园卡余额与消费记录</td><td>余额与近期消费汇总，防止在食堂窗口前才发现余额不足</td></tr>
+      <tr><td>课表与空闲时间提醒</td><td>结合课表推送「现在适合去办哪件事」——把事务安排进已有空档</td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>设计理由<span class="en">Design rationale</span></h2>
+    <ul>
+      <li><b>以任务而非功能组织界面</b>：用户脑子里想的是「我现在能不能吃上饭」，而不是「进入食堂模块」。
+        因此首屏按<b>情境</b>（我现在在哪、还有多少时间）组织，而不是按功能清单排列入口。—— 这是本阶段访谈要重点验证的假设。</li>
+      <li><b>实时性优先于信息量</b>：校园信息的价值高度依赖新鲜度，一个过期的时间比没有更糟（用户会白跑一趟）。
+        因此每个模块都要显示「数据更新于几分钟前」。</li>
+      <li><b>互助需要可信机制</b>：跑腿功能的成败不取决于任务发布，而取决于结算与评价是否让人放心，
+        这是本阶段访谈中「最不放心或最麻烦的环节」一题的关注点。</li>
+      <li><b>隐私是前提条件</b>：位置、课表、消费记录都属于敏感信息，问卷中专门设置了对各类信息的提供意愿与信任条件题目。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>范围与不做什么<span class="en">Scope</span></h2>
+    <ul>
+      <li>本项目聚焦<b>校园内的生活事务</b>，不做社交、不做课程学习平台、不做二手交易。</li>
+      <li>本期（P3）<b>只收集数据、不设计界面</b>；界面方案将在后续阶段依据本阶段的数据决定。</li>
+      <li>数据收集阶段不预先宣称功能的价值排序——排序结果由问卷与访谈决定。</li>
+    </ul>
+    <div class="note">本提案是 P2 阶段定稿的内容；P3 阶段的任务是用访谈与问卷检验它，而不是替它辩护。</div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Team CampusFlow</b> · 王正阳（202310130296）· 刘明洋（202300130078）· 郑立昌（202300130116）· 杨梓祺（202300130265）</p>
+    <p>人机交互（HCI）实验课小组项目 · P3: Collecting Data · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
