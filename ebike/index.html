@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>校园电动车 ID 原型 E-bike ID · CampusFlow 项目网站</title>
+<meta name="description" content="校园电动车 ID 的 HCI 界面设计：一张贴在车上的可扫码身份证，以及扫码后的三个 App 页面。低保真草图 + 中保真线框图 + 可点击原型。">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .demo-row{display:flex;gap:26px;align-items:flex-start;margin-top:8px}
+  .demo-frame{width:420px;flex:none;border:1px solid #dde5eb;border-radius:14px;overflow:hidden;
+    background:#f5f8fa;box-shadow:0 4px 18px rgba(18,41,63,.10)}
+  .demo-frame iframe{width:420px;height:880px;border:0;display:block}
+  .demo-notes{flex:1;min-width:260px}
+  .demo-notes h3{font-size:15px;margin:0 0 8px;color:#16324f}
+  .demo-notes ol{margin:0 0 16px 18px;padding:0}
+  .demo-notes li{font-size:14px;line-height:1.85;color:#37414f}
+  .shot{width:100%;border:1px solid #dde5eb;border-radius:10px;display:block;margin:10px 0 4px}
+  .cap{font-size:12.5px;color:#8b959f;margin-bottom:18px}
+  .two{display:flex;gap:20px;flex-wrap:wrap}
+  .two>div{flex:1;min-width:300px}
+  @media (max-width:820px){.demo-row{flex-direction:column}.demo-frame{width:100%}.demo-frame iframe{width:100%}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="en">E-bike ID &middot; Prototyping</div>
+    <h1>校园电动车 ID 原型</h1>
+    <p class="lead"><b>为校园电动车设计一张贴在车上的「身份证」，以及扫码之后的三个 App 页面。</b>
+      情景设定：本组受校区安全部门委托，用 HCI 界面来管理校园电动车——
+      解决乱停挡道、违规难以溯源、失窃后无法确认车辆身份、车况与年检无人掌握四类问题。</p>
+    <div class="meta">Course: 人机交互实验课 · 作业 8、9：Low-fi &amp; Medium-fi Prototyping · 2026</div>
+  </div>
+</header>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html">首页 Overview</a>
+    <a href="../team.html">团队介绍 Team</a>
+    <a href="../proposal.html">项目提案 Proposal</a>
+    <a href="../data-collection.html">数据收集计划 Data Collection</a>
+    <a href="../survey.html">问卷题目 Survey</a>
+    <a class="on" href="index.html">电动车 ID 原型 E-bike ID</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>可点击原型<span class="en">Clickable prototype</span></h2>
+    <p>下面这个手机画面是<b>真的能点的</b>：点「请求挪车」进入表单、点「报修 / 故障」进入车辆档案、
+      表单可以选原因、可以填留言、提交后会看到成功状态。它对应报告里中保真线框图的三屏设计。</p>
+
+    <div class="demo-row">
+      <div class="demo-frame"><iframe src="demo.html" title="校园电动车 ID 可点击原型"></iframe></div>
+      <div class="demo-notes">
+        <h3>三屏的分工</h3>
+        <ol>
+          <li><b>车辆身份</b> —— 先回答「这车能不能用」：备案状态徽章、车辆编号、常停区域、违规次数；
+              三个动作按紧急度排序（挪车为主，报修为次，失窃单列）。</li>
+          <li><b>车辆档案</b> —— 回答「它过去发生过什么」：备案信息、违规记录、报修记录，全部只读。</li>
+          <li><b>请求挪车</b> —— 回答「我怎么让车主挪车」：原因必选、留言选填、默认匿名通知。</li>
+        </ol>
+        <h3>为什么这样设计</h3>
+        <ol>
+          <li><b>状态先行</b>：第一眼给「能不能用」，而不是给车型和车主。</li>
+          <li><b>角色化视图</b>：非车主看不到车主信息，只有车主本人能管理本车。</li>
+          <li><b>一码两用</b>：卡正面码面向所有人，背面复核码只给安保，两者内容不同源。</li>
+        </ol>
+        <p style="font-size:13px;color:#7b8794;margin-top:12px">提示：这是静态演示，没有后端与数据库；
+          扫码解析、真实通知等功能不在本阶段范围内。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>ID 卡设计<span class="en">The card</span></h2>
+    <p>卡片是 90 × 60 mm 的防水贴纸（PVC 覆膜），双面印刷，贴在车头挡泥板或车架立管上。
+      正面以二维码为主视觉，背面写规则与联系方式。</p>
+    <img class="shot" src="card-wireframe.png" alt="校园电动车 ID 卡正反面线框图（中保真）">
+    <div class="cap">图 1　卡片正反面线框图：正面二维码 32 × 32 mm（版本 1，纠错 H），背面复核码 20 × 20 mm</div>
+    <p><b>二维码是真的</b>：卡片上的二维码按 ISO/IEC 18004 标准生成，手机可以直接扫。
+      演示阶段正面码直接编码车辆编号 <code>CF-EB-0417</code>；背面复核码编码一段不同的校验载荷，
+      因此两张图案明显不同——这正是「一码两用」原则的物理落点。</p>
+  </section>
+
+  <section class="card">
+    <h2>App 界面线框图<span class="en">App wireframes</span></h2>
+    <img class="shot" src="app-wireframe.png" alt="三个 App 页面的中保真线框图">
+    <div class="cap">图 2　三个页面（375 × 812 pt，8 pt 栅格）：车辆身份 / 车辆档案 / 请求挪车</div>
+    <div class="two">
+      <div>
+        <h3 style="font-size:14px;color:#16324f;margin:0 0 6px">低保真阶段解决了什么</h3>
+        <p style="font-size:13.5px;color:#37414f;line-height:1.8">用手绘草图把「放什么、放哪、给谁看」摆出来，
+          并用编号批注记录每个决定的理由。草图允许丑、允许潦草，目的是快速对齐而不是定稿。</p>
+      </div>
+      <div>
+        <h3 style="font-size:14px;color:#16324f;margin:0 0 6px">中保真阶段确定了什么</h3>
+        <p style="font-size:13.5px;color:#37414f;line-height:1.8">用栅格、字号层级与组件状态把草图落定：
+          主操作只有一个填充按钮、状态徽章置于编号右侧、车主入口下沉到页尾——三处都是两轮之间改出来的。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>设计原则<span class="en">Design principles</span></h2>
+    <div class="grid">
+      <div class="tile"><b>① 一个码，两种用途</b><span>正面对所有扫码者开放（查状态、请求挪车），背面复核码只给安保，降低被拍照转发后的滥用风险</span></div>
+      <div class="tile"><b>② 状态先行</b><span>先回答「能不能用」，再给细节；状态用徽章而不是埋在字段列表里</span></div>
+      <div class="tile"><b>③ 动作三分</b><span>挪车、报修、失窃对应三种紧急度与三种角色，不能并列成三个同级按钮</span></div>
+      <div class="tile"><b>④ 最小必要信息</b><span>非车主只看得到备案状态与挪车入口，看不到车主姓名与联系方式</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Team CampusFlow</b> · 王正阳（202310130296）· 刘明洋（202300130078）· 郑立昌（202300130116）· 杨梓祺（202300130265）</p>
+    <p>人机交互（HCI）实验课小组项目 · 作业 8、9：Low-fi &amp; Medium-fi Prototyping · 2026</p>
+    <p>本页为课程作业的设计原型展示，不含真实业务系统。</p>
+  </div>
+</footer>
+
+</body>
+</html>
