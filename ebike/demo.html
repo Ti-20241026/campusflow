@@ -9,13 +9,12 @@
 :root{--navy:#16324f;--teal:#0d6f8f;--green:#12a37a;--red:#b23a2c;--grey:#7b8794;--line:#e6edf2;--bg:#f5f8fa}
 body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:#1d2430;
   display:flex;justify-content:center;min-height:100vh}
-.app{width:100%;max-width:420px;background:#fff;min-height:100vh;position:relative;
-  box-shadow:0 0 40px rgba(18,41,63,.08)}
+.app{width:100%;max-width:420px;background:#fff;min-height:100vh;position:relative;box-shadow:0 0 40px rgba(18,41,63,.08)}
 .top{height:52px;display:flex;align-items:center;padding:0 14px;border-bottom:1px solid var(--line);
   position:sticky;top:0;background:#fff;z-index:5}
 .top .back{font-size:14px;color:var(--teal);cursor:pointer;visibility:hidden}
 .top .t{position:absolute;left:0;right:0;text-align:center;font-size:16px;font-weight:700;color:var(--navy)}
-.body{padding:16px 16px 90px}
+.body{padding:16px 16px 96px}
 .hero{display:flex;gap:13px;align-items:center}
 .thumb{width:92px;height:78px;border:1px dashed #c9d3dc;border-radius:8px;background:#f5f8fa;
   display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);flex:none}
@@ -30,9 +29,9 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .row .v{font-weight:600}
 .row .v.d{color:var(--red)}
 .btn{display:flex;align-items:center;justify-content:center;height:48px;border-radius:9px;font-size:15px;
-  font-weight:700;margin-top:11px;border:1.5px solid var(--navy);cursor:pointer;transition:.15s;background:#fff;color:var(--navy)}
-.btn:active{transform:scale(.985)}
+  font-weight:700;margin-top:11px;border:1.5px solid var(--navy);cursor:pointer;background:#fff;color:var(--navy)}
 .btn.p{background:var(--navy);color:#fff}
+.btn:active{transform:scale(.985)}
 .link{text-align:center;font-size:13px;color:var(--teal);margin-top:16px;cursor:pointer}
 .hint{text-align:center;font-size:11.5px;color:#9aa5ae;margin-top:16px;line-height:1.6}
 .sec{font-size:13px;font-weight:700;color:var(--teal);margin:18px 0 8px}
@@ -40,10 +39,9 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .kv{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;color:#3a4652}
 .kv span:first-child{color:var(--grey)}
 .tl{border-left:2px solid var(--line);padding-left:13px;margin-left:4px}
-.it{margin-bottom:11px}
-.it:last-child{margin-bottom:0}
+.it{margin-bottom:11px}.it:last-child{margin-bottom:0}
 .it .d{font-size:11.5px;color:#8b959f}
-.it .x{font-size:13px;font-weight:600;color:#1d2430;margin-top:1px}
+.it .x{font-size:13px;font-weight:600;margin-top:1px}
 .it .s{font-size:11.5px;color:var(--grey);margin-top:1px}
 .radios{border:1px solid var(--line);border-radius:10px;padding:3px 13px}
 .radio{display:flex;align-items:center;gap:10px;padding:11px 0;font-size:14px;border-bottom:1px solid #f3f6f8;cursor:pointer}
@@ -53,26 +51,50 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .radio.on .dot:after{content:'';position:absolute;inset:3px;background:var(--navy);border-radius:50%}
 .ta{width:100%;height:80px;border:1px solid #dde5eb;border-radius:9px;background:#fbfcfd;padding:10px 12px;
   font-size:13px;color:#1d2430;font-family:inherit;resize:none;outline:none}
-.ta::placeholder{color:#9aa5ae}
 .sw{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-top:14px;cursor:pointer}
 .tg{width:40px;height:22px;border-radius:12px;background:var(--navy);position:relative;flex:none;transition:.2s}
 .tg:after{content:'';position:absolute;right:2px;top:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s}
-.tg.off{background:#c9d3dc}
-.tg.off:after{right:20px}
-.done{text-align:center;padding:60px 20px}
+.tg.off{background:#c9d3dc}.tg.off:after{right:20px}
+.done{text-align:center;padding:56px 20px}
 .done .ic{width:64px;height:64px;border-radius:50%;background:var(--green);margin:0 auto 18px;
   display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff}
 .done h3{font-size:17px;color:var(--navy);margin-bottom:8px}
 .done p{font-size:13px;color:var(--grey);line-height:1.7}
-.page{display:none}
-.page.on{display:block}
+.page{display:none}.page.on{display:block}
+.ownerbox{background:#f4f9ff;border:1px solid #cfe2f3;border-radius:10px;padding:12px 13px;margin-top:15px}
+.ownerbox .t1{font-size:12px;color:#3d6f96;font-weight:700}
+.ownerbox .nm{font-size:15px;font-weight:700;color:var(--navy);margin-top:5px}
+.ownerbox .meta3{font-size:11.5px;color:var(--grey);margin-top:3px}
+.tagme{display:inline-block;background:var(--navy);color:#fff;border-radius:9px;padding:1px 7px;
+  font-size:10.5px;font-weight:700;margin-left:6px;vertical-align:2px}
+.mgmt{display:flex;gap:9px;margin-top:12px}
+.mgmt div{flex:1;text-align:center;font-size:12px;color:var(--navy);border:1px solid #cfe2f3;background:#fff;
+  border-radius:8px;padding:9px 4px;cursor:pointer}
+.hide{display:none!important}
+.mask{position:fixed;inset:0;background:rgba(13,32,48,.45);display:none;align-items:center;
+  justify-content:center;z-index:50;padding:20px}
+.mask.on{display:flex}
+.modal{background:#fff;border-radius:14px;padding:22px 20px;width:100%;max-width:330px;text-align:center}
+.modal .lg{width:46px;height:46px;border-radius:11px;background:var(--navy);color:#fff;margin:0 auto 12px;
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
+.modal h4{font-size:15px;color:var(--navy)}
+.modal p{font-size:12px;color:var(--grey);line-height:1.7;margin:8px 0 14px}
+.modal .b{height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;cursor:pointer;margin-top:9px}
+.modal .b.p{background:var(--navy);color:#fff}
+.modal .b.g{border:1.5px solid var(--line);color:var(--grey);font-weight:600}
+.demo{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:420px;
+  background:#16324f;color:#fff;padding:9px 14px 11px;z-index:40}
+.demo .lb{font-size:10.5px;letter-spacing:1.5px;opacity:.75;margin-bottom:6px}
+.demo .seg{display:flex;background:rgba(255,255,255,.14);border-radius:9px;padding:3px}
+.demo .seg div{flex:1;text-align:center;font-size:12.5px;padding:7px 0;border-radius:7px;cursor:pointer;color:#cfe0ee}
+.demo .seg div.on{background:#fff;color:#16324f;font-weight:700}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="top"><span class="back" id="back">‹ 返回</span><span class="t" id="title">车辆身份</span></div>
 
-  <!-- 页 1 -->
   <div class="page on" id="p1"><div class="body">
     <div class="hero">
       <div class="thumb">车照</div>
@@ -80,6 +102,16 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
         <div class="no">CF-EB-0417</div>
         <div class="badge">已备案 ✓</div>
         <div class="sub">小牛 UQi · 白色</div>
+      </div>
+    </div>
+    <div class="ownerbox hide" id="ownerBox">
+      <div class="t1">我是登记车主<span class="tagme">已认证</span></div>
+      <div class="nm">王 * 阳 · 学号 2023****296</div>
+      <div class="meta3">绑定于 2026.09.12 ｜ 与车辆登记信息一致</div>
+      <div class="mgmt">
+        <div onclick="alert('过户申请：需新车主扫码确认后生效')">过户</div>
+        <div onclick="alert('已预约 2027.08 前年检，届时提醒')">续期年检</div>
+        <div onclick="alert('已提交解绑申请，需安保审核')">解绑</div>
       </div>
     </div>
     <div class="list">
@@ -91,11 +123,10 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
     <div class="btn p" onclick="go('p3')">请求挪车</div>
     <div class="btn" onclick="go('p2')">报修 / 故障</div>
     <div class="btn" onclick="alert('已接通安保热线：0531-8888-0000')">上报失窃</div>
-    <div class="link" onclick="alert('车主认证：需校内统一身份，验证后可管理本车')">我是车主 · 绑定后管理</div>
-    <div class="hint">非车主不显示车主姓名与联系方式</div>
+    <div class="link" id="ownerLink" onclick="openAuth()">我是车主 · 认证后管理</div>
+    <div class="hint" id="ownerHint">非车主不显示车主姓名与联系方式</div>
   </div></div>
 
-  <!-- 页 2 -->
   <div class="page" id="p2"><div class="body">
     <div class="sec" style="margin-top:0">备案信息</div>
     <div class="card">
@@ -116,7 +147,6 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
     <div class="hint">档案只读；改动需安保审核</div>
   </div></div>
 
-  <!-- 页 3 -->
   <div class="page" id="p3"><div class="body" id="formArea">
     <div style="font-size:12px;color:var(--grey)">车辆编号</div>
     <div class="no" style="font-size:17px">CF-EB-0417</div>
@@ -131,12 +161,30 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
     <textarea class="ta" placeholder="例：车停在 3 号楼门口，麻烦挪一下"></textarea>
     <div class="sw" onclick="toggle()"><span>匿名通知车主（不显示我的信息）</span><span class="tg" id="tg"></span></div>
     <div class="btn p" style="margin-top:20px" onclick="submitMove()">提交请求</div>
-    <div class="hint">提交后通知车主；超 30 分钟未响应转安保处理</div>
+    <div class="hint">提交后通知车主；超 30 分钟未响应转安保</div>
   </div></div>
 </div>
 
+<div class="mask" id="mask">
+  <div class="modal">
+    <div class="lg">认</div>
+    <h4>校内统一身份认证</h4>
+    <p>为判断你是不是这辆车的登记车主，需要先验证身份。<br>系统只比对「学号 ↔ 车辆登记人」，不读取其他信息。</p>
+    <div class="b p" onclick="loginAsOwner()">以 2023****296 登录</div>
+    <div class="b g" onclick="loginAsGuest()">我不是车主，只看公开信息</div>
+  </div>
+</div>
+
+<div class="demo">
+  <div class="lb">演示控制 · 切换扫码者身份</div>
+  <div class="seg">
+    <div class="on" id="segGuest" onclick="setRole('guest')">路人 / 其他同学</div>
+    <div id="segOwner" onclick="setRole('owner')">车主本人（已认证）</div>
+  </div>
+</div>
+
 <script>
-var cur='p1';
+var cur='p1', role='guest';
 var T={'p1':'车辆身份','p2':'车辆档案','p3':'请求挪车'};
 function go(id){
   document.querySelectorAll('.page').forEach(function(e){e.classList.remove('on')});
@@ -145,29 +193,33 @@ function go(id){
   document.getElementById('back').style.visibility=(id==='p1')?'hidden':'visible';
   cur=id; window.scrollTo(0,0);
 }
-document.getElementById('back').onclick=function(){ go(cur==='p3'?'p1':'p1'); };
+document.getElementById('back').onclick=function(){ go('p1'); };
 document.querySelectorAll('.radio').forEach(function(r){
-  r.onclick=function(){
-    document.querySelectorAll('.radio').forEach(function(x){x.classList.remove('on')});
-    r.classList.add('on');
-  };
+  r.onclick=function(){document.querySelectorAll('.radio').forEach(function(x){x.classList.remove('on')});r.classList.add('on')};
 });
-function toggle(){ document.getElementById('tg').classList.toggle('off'); }
+function toggle(){document.getElementById('tg').classList.toggle('off')}
 function submitMove(){
-  var r=document.querySelector('.radio.on');
-  var reason=r?r.dataset.r:'';
-  document.getElementById('p3').innerHTML='<div class="done"><div class="ic">✓</div>'
-    +'<h3>已通知车主</h3><p>原因：'+reason+'<br>车主将会收到匿名提醒，预计 10 分钟内响应。<br>'
-    +'超 30 分钟未响应，系统自动转交安保处理。</p>'
-    +'<div class="btn" style="margin-top:26px;max-width:200px;margin-left:auto;margin-right:auto" '
-    +'onclick="location.reload()">完成</div></div>';
+  var r=document.querySelector('.radio.on'), reason=r?r.dataset.r:'';
+  document.getElementById('p3').innerHTML='<div class="done"><div class="ic">✓</div><h3>已通知车主</h3>'
+    +'<p>原因：'+reason+'<br>车主将收到匿名提醒，预计 10 分钟内响应。<br>超 30 分钟未响应，系统自动转交安保处理。</p>'
+    +'<div class="btn" style="margin:26px auto 0;max-width:200px" onclick="go(\'p1\')">完成</div></div>';
 }
-// 支持卡片二维码带参数直接定位页面
-(function(){
-  var m=location.hash.replace('#','');
-  if(m==='records') go('p2');
-  if(m==='move') go('p3');
-})();
+function setRole(r){
+  role=r; var owner=(r==='owner');
+  document.getElementById('ownerBox').classList.toggle('hide', !owner);
+  document.getElementById('ownerLink').classList.toggle('hide', owner);
+  document.getElementById('ownerHint').classList.toggle('hide', owner);
+  document.getElementById('segOwner').classList.toggle('on', owner);
+  document.getElementById('segGuest').classList.toggle('on', !owner);
+  go('p1');
+}
+function openAuth(){ document.getElementById('mask').classList.add('on'); }
+function loginAsOwner(){ document.getElementById('mask').classList.remove('on'); setRole('owner'); }
+function loginAsGuest(){
+  document.getElementById('mask').classList.remove('on');
+  alert('该账号不是本车登记车主：\n· 仅展示公开信息\n· 本次尝试已记录（用于防止冒领）\n如登记有误，请联系安保处申诉。');
+}
+(function(){ var m=location.hash.replace('#',''); if(m==='records')go('p2'); if(m==='move')go('p3'); })();
 </script>
 </body>
 </html>

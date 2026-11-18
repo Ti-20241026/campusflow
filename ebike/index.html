@@ -106,6 +106,30 @@
   </section>
 
   <section class="card">
+    <h2>怎么区分车主与其他人<span class="en">Identity &amp; access</span></h2>
+    <p><b>二维码只标识「车」，不标识「人」。</b>任何人扫同一个码，看到的都是同一页公开信息；
+      要进车主视图，必须先通过校内统一身份认证，再由系统比对「学号 ↔ 车辆登记人」。</p>
+    <img class="shot" src="auth-flow.png" alt="扫码之后的身份判定路径流程图">
+    <div class="cap">图 3　扫码之后的身份判定路径：码 → 车辆 → 公开视图 → 统一认证 → 角色分支</div>
+    <div class="two">
+      <div>
+        <h3 style="font-size:14px;color:#16324f;margin:0 0 6px">为什么不把「车主码」印在卡上</h3>
+        <p style="font-size:13.5px;color:#37414f;line-height:1.8">卡片是物理的、可以被拍照转发——任何印在卡上的东西
+          都应视为公开信息。把角色写进码里，等于把钥匙贴在车上。所以身份判定放在服务端，
+          由登录态决定，而不是靠一张特殊图案。</p>
+      </div>
+      <div>
+        <h3 style="font-size:14px;color:#16324f;margin:0 0 6px">三类人分别看到什么</h3>
+        <p style="font-size:13.5px;color:#37414f;line-height:1.8"><b>路人 / 其他同学</b>：编号、备案状态、常停区域、违规总数、挪车入口。<br>
+          <b>车主本人</b>：以上全部 ＋ 车主信息、过户、续期年检、解绑。<br>
+          <b>安保</b>（用背面复核码）：违规详情与登记、锁车 / 解锁。</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#7b8794;margin-top:14px">提示：下方原型底部的「切换扫码者身份」是演示开关，
+      真实系统中该切换由认证结果决定，用户不能自己选。</p>
+  </section>
+
+  <section class="card">
     <h2>设计原则<span class="en">Design principles</span></h2>
     <div class="grid">
       <div class="tile"><b>① 一个码，两种用途</b><span>正面对所有扫码者开放（查状态、请求挪车），背面复核码只给安保，降低被拍照转发后的滥用风险</span></div>
